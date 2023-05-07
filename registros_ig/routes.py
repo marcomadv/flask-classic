@@ -1,6 +1,10 @@
 from registros_ig import app
 from flask import render_template
+from registros_ig.models import *
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+
+    registros = select_all()
+    
+    return render_template("index.html", data=registros)
