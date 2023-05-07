@@ -6,5 +6,9 @@ from registros_ig.models import *
 def index():
 
     registros = select_all()
-    
+
     return render_template("index.html", data=registros)
+
+@app.route("/new")
+def create():
+    return render_template("create.html")
