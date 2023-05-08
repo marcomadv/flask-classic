@@ -9,6 +9,6 @@ header,footer{
 body{
     min-height: 100vh;
     display: grid;
-    grid-template-rows: auto 500px 1fr auto;
+    grid-template-rows: auto 800px 1fr auto;
     margin: 0;
 }
