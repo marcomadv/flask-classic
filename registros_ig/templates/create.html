@@ -1,22 +1,39 @@
 {% extends "base.html" %}
 {% block section %}
-<form action="/new" method="POST">  <!-- Configuramos que el metodo que envia sea POST -->
-    <label>Fecha</label>
-    <input type="date" name="date" value="{{dataForm.date}}">
-    <label>Concepto</label>
-    <input type="text" name="concept" placeholder="Ingrese concepto" value="{{dataForm.concept}}">
-    <label>Monto</label>
-    <input type="number" name="quantity" placeholder="Ingrese monto" step="0.01" value="{{dataForm.quantity}}">
+<form action="/new" method="POST"> 
+    {{dataForm.csrf_token}} <!--Key de seguridad-->
 
-    <!-- Button -->
-    <button type="submit">Guardar</button>
-</form>
-<article>
-    <ul>
-        <!-- mostrar lista de los errores que haya en el formulario -->
-        {% for item in msgError %}
-        <li>{{item}}</li>
+    {{dataForm.date.label}}
+    {{dataForm.date}}
+    {% if dataForm.date.errors %}
+        <ul class="errors">
+        {% for error in dataForm.date.errors %}
+            <li>{{ error }}</li>
         {% endfor %}
-    </ul>
-</article>
+        </ul>
+    {% endif %}
+
+    {{dataForm.concept.label}}
+    {{dataForm.concept}}
+    {% if dataForm.concept.errors %}
+        <ul class="errors">
+        {% for error in dataForm.concept.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {{dataForm.quantity.label}}
+    {{dataForm.quantity(autocomplete="off")}}
+    {% if dataForm.quantity.errors %}
+        <ul class="errors">
+        {% for error in dataForm.quantity.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.submit}}
+</form>
+
 {% endblock %}

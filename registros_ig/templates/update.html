@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block section %}
+<h3 style="color: grey;">Actualizar registro</h3>
+
+<form action="/update/{{idform}}" method="POST"> 
+    {{dataForm.csrf_token}} <!--Key de seguridad-->
+
+    {{dataForm.date.label}}
+    {{dataForm.date}}
+    {% if dataForm.date.errors %}
+        <ul class="errors">
+        {% for error in dataForm.date.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.concept.label}}
+    {{dataForm.concept}}
+    {% if dataForm.concept.errors %}
+        <ul class="errors">
+        {% for error in dataForm.concept.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {{dataForm.quantity.label}}
+    {{dataForm.quantity(autocomplete="off")}}
+    {% if dataForm.quantity.errors %}
+        <ul class="errors">
+        {% for error in dataForm.quantity.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.submit}}
+</form>
+
+{% endblock %}

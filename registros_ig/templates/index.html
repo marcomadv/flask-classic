@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 {% block section %} 
-<h3>Lista de movimientos</h3>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<h3 style="color: steelblue;">Lista de movimientos</h3>
         <table role="grid">
             <thead>
                 <tr>

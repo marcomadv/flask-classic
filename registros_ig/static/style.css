@@ -9,6 +9,18 @@ header,footer{
 body{
     min-height: 100vh;
     display: grid;
-    grid-template-rows: auto 800px 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
     margin: 0;
+}
+
+ul.errors{
+    color: darkred;
+    font-weight: bold;
+    font-size: 0,8em;
+}
+
+ul.flashes{
+    color: rgb(51, 181, 62);
+    font-weight: bold;
+    font-size: 0,8em;
 }
