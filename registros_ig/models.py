@@ -42,3 +42,17 @@ def update_by(id,registro):
     conectUpdateBy = Conexion(f"UPDATE movements SET date = ?, concept=?, quantity = ? WHERE id ={id};",registro)
     conectUpdateBy.con.commit()
     conectUpdateBy.con.close()
+
+def select_ingreso():
+    conectIngreso = Conexion("SELECT sum(quantity) from movements WHERE quantity > 0")
+    resultadoIngreso = conectIngreso.res.fetchall()
+    conectIngreso.con.close()
+    
+    return resultadoIngreso[0][0]
+
+def select_egreso():
+    conectEgreso = Conexion("SELECT sum(quantity) from movements WHERE quantity < 0")
+    resultadoEgreso = conectEgreso.res.fetchall()
+    conectEgreso.con.close()
+
+    return resultadoEgreso[0][0]

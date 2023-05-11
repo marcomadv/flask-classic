@@ -21,8 +21,11 @@ def validateForm(datosFormulario):
 def index():
 
     registros = select_all()
+    ganancia = select_ingreso()
+    gastos = select_egreso()
 
-    return render_template("index.html", data=registros)
+
+    return render_template("index.html", data=registros,ingreso=ganancia,egreso=gastos)
 
 @app.route("/new", methods=["GET","POST"])
 def create():
